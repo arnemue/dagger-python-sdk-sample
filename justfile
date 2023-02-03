@@ -3,8 +3,4 @@
 #   like a script, with `./justfile test`, for example.
 
 default:
-  echo what
-
-
-dagger:
-  python daggerfiles/simple.py
+  python daggerfiles/simple_pytest.py
