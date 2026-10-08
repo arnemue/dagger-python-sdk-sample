@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-cd /usr/local
-curl -L https://dl.dagger.io/dagger/install.sh | sudo sh
-cd -
-pip3 install -r .devcontainer/requirements.txt
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+# The SDK provisions the matching CLI and engine when make run starts.
+python -m pip install -r .devcontainer/requirements.txt -e '.[test]'
