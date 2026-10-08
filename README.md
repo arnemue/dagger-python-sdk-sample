@@ -15,7 +15,8 @@ make run
 
 `make run` runs the tests in `python:3.14.7-slim-trixie` through Dagger. For a
 network that uses a custom CA, place its PEM certificate in
-`$XDG_CONFIG_HOME/dagger/ca-certificates` (or `~/.config/dagger/ca-certificates`
-when `XDG_CONFIG_HOME` is unset) before starting the engine. Dagger installs
+`$XDG_CONFIG_HOME/dagger/ca-certificates` before starting the engine. When
+`XDG_CONFIG_HOME` is unset, use `~/.config/dagger/ca-certificates` on Linux or
+`~/Library/Application Support/dagger/ca-certificates` on macOS. Dagger installs
 these certificates in the engine and test container; pip uses the system CA
 bundle with certificate verification enabled.
