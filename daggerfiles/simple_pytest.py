@@ -13,14 +13,16 @@ async def test():
         python = (
             client.container()
             # pull container
-            .from_("python:3.11-slim-bullseye")
+            .from_("python:3.14.7-slim-trixie")
             # mount source directory
             .with_mounted_directory("/ws", src)
             # change working directory
             .with_workdir("/ws")
+            # Use the system CA bundle, including custom CAs installed by Dagger.
+            .with_env_variable("PIP_CERT", "/etc/ssl/certs/ca-certificates.crt")
             # install package and test dependencies
             .with_exec(["pip", "install", "-e", ".[test]"])
-            # execute tets
+            # execute tests
             .with_exec(["pytest", "-v", "tests"])
         )
 
